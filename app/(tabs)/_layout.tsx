@@ -9,7 +9,7 @@ export default function Layout() {
       <TabSlot />
       <TabList style={[styles.tabList, styles.shadow]}>
         <TabTrigger name="index" href="/" asChild>
-          <TabButton icon="home">首页</TabButton>
+          <TabButton icon="folder">文件</TabButton>
         </TabTrigger>
         <TabTrigger name="upload" href="/upload" asChild>
           <TouchableOpacity
