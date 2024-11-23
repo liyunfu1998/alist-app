@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { TabTriggerSlotProps } from "expo-router/ui";
 import { ComponentProps, Ref, forwardRef } from "react";
@@ -31,12 +32,12 @@ const TabButton = forwardRef(
         <FontAwesome
           name={icon}
           size={24}
-          color={isFocused ? "#e32f45" : "#748c94"}
+          color={isFocused ? Colors.linkColor : Colors.unselectedColor}
         />
         <Text
           style={[
             { fontSize: 16 },
-            { color: isFocused ? "#e32f45" : "#748c94" },
+            { color: isFocused ? Colors.linkColor : Colors.unselectedColor },
           ]}
         >
           {children}

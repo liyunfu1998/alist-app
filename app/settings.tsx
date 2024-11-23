@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
@@ -34,7 +35,7 @@ const FormScreen = () => {
       const token = res?.data?.token;
       if (token) {
         await AsyncStorage.setItem("token", token);
-        router.replace("/");
+        router.dismissTo("/");
       } else {
         Alert.alert("登录失败");
       }
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     height: 60,
-    backgroundColor: "#FFD200",
+    backgroundColor: Colors.linkColor,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",

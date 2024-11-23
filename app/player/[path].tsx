@@ -1,13 +1,10 @@
 import { fetchWithToken } from "@/lib/api";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import { useVideoPlayer, VideoView } from "expo-video";
-import { useEvent } from "expo";
+import { VideoView } from "expo-video";
 
-import { Text } from "react-native";
 import Player from "@/components/Player";
 export default function Detail() {
-  const playerRef = useRef<VideoView>(null);
   const { path } = useLocalSearchParams();
   const [data, setData] = useState<any>(null);
   const fetchData = async (path: string) => {

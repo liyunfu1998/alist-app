@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const fetchWithToken = async (endpoint: string, options: any = {}) => {
-  console.log("endpoint", endpoint);
   const baseUrl = await AsyncStorage.getItem("baseUrl");
   const token = await AsyncStorage.getItem("token");
 
@@ -22,7 +21,6 @@ export const fetchWithToken = async (endpoint: string, options: any = {}) => {
   });
 
   const data = await response.json();
-  console.log("data", data);
   if (!response.ok) {
     throw new Error(data.message || "请求失败");
   }

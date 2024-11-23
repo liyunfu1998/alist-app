@@ -1,7 +1,9 @@
 import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button, Platform } from "react-native";
+import { Dimensions } from "react-native";
 
+const { width } = Dimensions.get("window");
 export default function VideoScreen(props: { url: string }) {
   const player = useVideoPlayer(props.url, (player) => {
     player.loop = true;
@@ -45,8 +47,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#f7f7f7",
   },
   video: {
-    width: "100%",
-    height: 275,
+    width: width - 20,
+    height: ((width - 20) * 9) / 16,
+    ...Platform.select({
+      web: {
+        width: 900,
+        height: (900 * 9) / 16,
+      },
+    }),
     backgroundColor: "#000",
   },
   controlsContainer: {

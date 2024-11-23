@@ -18,12 +18,13 @@ export default function RootLayout() {
         }).then((res) => {
           if (res?.data) {
             setUserInfo(res?.data);
+            AsyncStorage.setItem("userInfo", JSON.stringify(res?.data));
           }
         }),
       ]);
     }
     if (!token) {
-      router.push("/settings");
+      router.replace("/settings");
     }
   };
   useEffect(() => {
@@ -32,16 +33,7 @@ export default function RootLayout() {
 
   return (
     <>
-      {/* <Header /> */}
-      {/* {userInfo && <Text>{userInfo.username}</Text>} */}
-      <Stack
-        screenOptions={
-          {
-            // headerShown: false,
-          }
-        }
-        initialRouteName="settings"
-      >
+      <Stack initialRouteName="settings">
         <Stack.Screen
           name="settings"
           options={{
@@ -76,11 +68,11 @@ export default function RootLayout() {
         <Stack.Screen
           name="(tabs)"
           options={{
-            title: "文件",
+            headerShown: false,
           }}
         />
         <Stack.Screen
-          name="[path]"
+          name="player/[path]"
           options={{
             title: "详情",
           }}
